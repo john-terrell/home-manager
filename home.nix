@@ -4,7 +4,6 @@
   home.stateVersion = "22.11";
   programs.home-manager.enable = true;
 
-
   home.packages = [
     pkgs.bashInteractive
     pkgs.neofetch         # 
@@ -40,7 +39,7 @@
     userEmail = "john@coolpeople.io";
     userName = "John W. Terrell";
     signing.key = "64EDA67B2782882D8A5A83EC2E424258DD3731F4";
-    signing.signByDefault = false;
+    signing.signByDefault = true;
     delta.enable = true;
   };
 
