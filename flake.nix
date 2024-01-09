@@ -7,18 +7,29 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nix-index-database = {
+      url = "github:Mic92/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { nixpkgs, home-manager, ... }: let
-    arch = "aarch64-darwin";
-  in {
-    defaultPackage.${arch} =
-      home-manager.defaultPackage.${arch};
+  outputs = { nixpkgs, home-manager, nix-index-database, ... }:
+    let
+      withArch = arch:
+        home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.${arch};
+          modules = [ ./home.nix nix-index-database.hmModules.nix-index ];
+        };
+    in {
+      defaultPackage = {
+        x86_64-darwin = home-manager.defaultPackage.x86_64-darwin;
+        aarch64-darwin = home-manager.defaultPackage.aarch64-darwin;
+        aarch64-linux = home-manager.defaultPackage.aarch64-linux;
+      };
 
-    homeConfigurations.johnt =
-      home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.${arch};
-        modules = [ ./home.nix ];
+      homeConfigurations = {
+        "johnt@Johns-MacBook-Pro-49715.local" = withArch "aarch64-darwin";
+        "johnt@nixos" = withArch "aarch64-linux";
       };
     };
 }
