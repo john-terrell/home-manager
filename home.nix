@@ -4,7 +4,6 @@
   home.stateVersion = "22.11";
   programs.home-manager.enable = true;
 
-
   home.packages = [
     pkgs.bashInteractive
     pkgs.neofetch         # 
