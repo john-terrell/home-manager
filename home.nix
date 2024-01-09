@@ -1,6 +1,6 @@
 { pkgs, ... }: {
   home.username = "johnt";
-  home.homeDirectory = "/Users/johnt";
+  home.homeDirectory = if pkgs.hostPlatform.isLinux then "/home/johnt" else "/Users/johnt";
   home.stateVersion = "22.11";
   programs.home-manager.enable = true;
 
