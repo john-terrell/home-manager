@@ -29,7 +29,7 @@
 
       homeConfigurations = {
         "johnt@Johns-MacBook-Pro-49715.local" = withArch "aarch64-darwin";
-        "johnt@nixos" = withArch "aarch64-linux";
+        "johnt@nixos-mbp" = withArch "aarch64-linux";
       };
     };
 }
