@@ -8,6 +8,7 @@
     pkgs.bashInteractive
     pkgs.neofetch         # 
     pkgs.pinentry
+    pkgs.sequoia-sq       # gpg replacement (provides sq command)
   ];
 
   programs.chromium = {
@@ -81,6 +82,8 @@
 
   programs.zoxide = {     # 'cd' replacement (provides 'z' alias)
     enable = true;
+    enableZshIntegration = true;
+    enableBashIntegration = true;
   };
 
   programs.zsh = {
