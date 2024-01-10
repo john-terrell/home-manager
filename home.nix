@@ -46,6 +46,20 @@
 
   programs.gpg = {
     enable = true;
+    publicKeys = [
+      {
+        text = builtins.readFile ./public_keys/john_terrell.gpg;
+        trust = "ultimate";
+      }
+      {
+        text = builtins.readFile ./public_keys/bill_coldwell.gpg;
+        trust = "full";
+      }
+      {
+        text = builtins.readFile ./public_keys/chris_hanson.gpg;
+        trust = "full";
+      }
+    ];
   };
 
   programs.htop = {
@@ -90,12 +104,5 @@
     enable = true;
     profileExtra = builtins.readFile ./zprofile;
     initExtra = builtins.readFile ./zshrc;
-  };
-
-  services = {
-    gpg-agent = {
-      enable = pkgs.hostPlatform.isLinux;
-      enableSshSupport = true;
-    };
   };
 }
