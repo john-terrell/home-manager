@@ -48,15 +48,15 @@
     enable = true;
     publicKeys = [
       {
-        text = builtins.readFile ./public_keys/john_terrell.gpg;
+        text = builtins.readFile ./public_keys/john_terrell.asc;
         trust = "ultimate";
       }
       {
-        text = builtins.readFile ./public_keys/bill_coldwell.gpg;
+        text = builtins.readFile ./public_keys/bill_coldwell.asc;
         trust = "full";
       }
       {
-        text = builtins.readFile ./public_keys/chris_hanson.gpg;
+        text = builtins.readFile ./public_keys/chris_hanson.asc;
         trust = "full";
       }
     ];
