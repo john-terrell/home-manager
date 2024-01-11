@@ -8,7 +8,10 @@
     pkgs.bashInteractive
     pkgs.neofetch         # 
     pkgs.pinentry
+    pkgs.rage             # file encryption
+    pkgs.rustup
     pkgs.sequoia-sq       # gpg replacement (provides sq command)
+    pkgs.sops             # security as a service
   ];
 
   programs.chromium = {
