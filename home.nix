@@ -6,12 +6,13 @@
 
   home.packages = [
     pkgs.bashInteractive
-    pkgs.neofetch         # 
+    pkgs.magic-wormhole-rs  # secure file transfers
+    pkgs.neofetch           # 
     pkgs.pinentry
-    pkgs.rage             # file encryption
+    pkgs.rage               # file encryption
     pkgs.rustup
-    pkgs.sequoia-sq       # gpg replacement (provides sq command)
-    pkgs.sops             # security as a service
+    pkgs.sequoia-sq         # gpg replacement (provides sq command)
+    pkgs.sops               # security as a service
   ];
 
   programs.chromium = {
