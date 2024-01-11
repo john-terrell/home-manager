@@ -30,6 +30,9 @@
       homeConfigurations = {
         "johnt@Johns-MBP-49715.coolpeople.io" = withArch "aarch64-darwin";
         "johnt@Johns-MacBook-Pro-49715.local" = withArch "aarch64-darwin";
+
+        "johnt@Johns-Mac-Studio-99539.local" = withArch "aarch64-darwin";
+        
         "johnt@nixos-mbp" = withArch "aarch64-linux";
       };
     };
