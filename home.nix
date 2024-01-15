@@ -12,12 +12,10 @@
     pkgs.rage               # file encryption
     pkgs.rustup
     pkgs.sequoia-sq         # gpg replacement (provides sq command)
+    pkgs.sequoia-sqop
+    pkgs.sequoia-chameleon-gnupg
     pkgs.sops               # security as a service
   ];
-
-  programs.chromium = {
-    enable = pkgs.hostPlatform.isLinux;
-  };
 
   programs.direnv = {
     enable = true;
@@ -28,10 +26,6 @@
     enable = true;
     enableAliases = true;
     git = true;
-  };
-
-  programs.firefox = {
-    enable = pkgs.hostPlatform.isLinux;
   };
 
   programs.fzf = {        # fuzzy search tool
