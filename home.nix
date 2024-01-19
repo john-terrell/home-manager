@@ -9,6 +9,7 @@
     pkgs.magic-wormhole-rs  # secure file transfers
     pkgs.neofetch           # 
     pkgs.pinentry
+    pkgs.protobuf
     pkgs.rage               # file encryption
     pkgs.rustup
     pkgs.sequoia-sq         # gpg replacement (provides sq command)
