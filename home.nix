@@ -2,6 +2,11 @@
   home.username = "johnt";
   home.homeDirectory = if pkgs.hostPlatform.isLinux then "/home/johnt" else "/Users/johnt";
   home.stateVersion = "22.11";
+
+  home.sessionVariables = { 
+    VCPKG_ROOT = "~/Projects/vcpkg";
+  };
+  
   programs.home-manager.enable = true;
 
   home.packages = [
