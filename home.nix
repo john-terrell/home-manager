@@ -7,12 +7,15 @@
     VCPKG_ROOT = "~/Projects/vcpkg";
   };
   
+  nixpkgs.config.allowUnfree = true;
+
   programs.home-manager.enable = true;
 
   home.packages = [
     pkgs.bashInteractive
     pkgs.magic-wormhole-rs  # secure file transfers
     pkgs.neofetch           # 
+    pkgs.openjdk17
     pkgs.pinentry
     pkgs.protobuf
     pkgs.rage               # file encryption
@@ -20,7 +23,8 @@
     pkgs.sequoia-sq         # gpg replacement (provides sq command)
     pkgs.sequoia-sqop
     pkgs.sequoia-chameleon-gnupg
-    pkgs.sops               # security as a service
+    pkgs.sops    
+    pkgs.terraform           # security as a service
   ];
 
   programs.direnv = {
@@ -90,6 +94,10 @@
   };
 
   programs.ripgrep = {
+    enable = true;
+  };
+
+  programs.sbt = {
     enable = true;
   };
 

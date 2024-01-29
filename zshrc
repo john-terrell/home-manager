@@ -11,3 +11,5 @@ source ~/.powerlevel10k/powerlevel10k.zsh-theme
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 export PATH="${HOME}/bin:$PATH"
+export PATH="${HOME}/Projects/bsc-2023.01-macos-12-arm64/bin:$PATH"
+
