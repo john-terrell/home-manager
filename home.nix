@@ -13,11 +13,13 @@
 
   home.packages = [
     pkgs.bashInteractive
+    pkgs.kubectl
     pkgs.magic-wormhole-rs  # secure file transfers
     pkgs.neofetch           # 
     pkgs.openjdk17
     pkgs.pinentry
     pkgs.protobuf
+    pkgs.python3
     pkgs.rage               # file encryption
     pkgs.rustup
     pkgs.sequoia-sq         # gpg replacement (provides sq command)
