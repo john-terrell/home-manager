@@ -13,8 +13,9 @@
 
   home.packages = [
     pkgs.bashInteractive
-    pkgs.kubectl
     pkgs.graphviz
+    pkgs.jq
+    pkgs.kubectl
     pkgs.magic-wormhole-rs  # secure file transfers
     pkgs.neofetch           # 
     pkgs.openjdk17

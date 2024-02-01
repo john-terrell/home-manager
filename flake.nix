@@ -28,7 +28,7 @@
       };
 
       homeConfigurations = {
-        "johnt@Johns-MacBook-Pro" = withArch "aarch64-darwin";
+        "johnt@Johns-Macbook-Pro" = withArch "aarch64-darwin";
         "johnt@Johns-Mac-Studio" = withArch "aarch64-darwin";
         
         "johnt@nixos-mbp" = withArch "aarch64-linux";
