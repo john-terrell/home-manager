@@ -20,6 +20,7 @@
     pkgs.neofetch           # 
     pkgs.openjdk17
     pkgs.pinentry
+    pkgs.podman
     pkgs.protobuf
     pkgs.python3
     pkgs.rage               # file encryption
