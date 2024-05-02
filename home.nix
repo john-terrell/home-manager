@@ -19,7 +19,6 @@
     pkgs.magic-wormhole-rs  # secure file transfers
     pkgs.neofetch           # 
     pkgs.openjdk17
-    pkgs.pinentry
     pkgs.podman
     pkgs.protobuf
     pkgs.python3
@@ -39,7 +38,6 @@
 
   programs.eza = {        # 'ls' replacement
     enable = true;
-    enableAliases = true;
     git = true;
   };
 
@@ -94,7 +92,6 @@
     enable = true;
     settings = {
       email = "john.terrell@gmail.com";
-      pinentry = "curses";
     };
   };
 
