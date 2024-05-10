@@ -12,6 +12,7 @@
   programs.home-manager.enable = true;
 
   home.packages = [
+    pkgs.ansible
     pkgs.bashInteractive
     pkgs.graphviz
     pkgs.jq
@@ -30,6 +31,10 @@
     pkgs.sops    
     pkgs.terraform           # security as a service
   ];
+
+  programs.btop = {
+    enable = true;
+  };
 
   programs.direnv = {
     enable = true;
