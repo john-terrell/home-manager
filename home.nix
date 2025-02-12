@@ -147,7 +147,8 @@
     maxCacheTtl = 86400;
     enableSshSupport = true;
     enableZshIntegration = true;
-    pinentryPackage = pkgs.pinentry-gtk2;
+#    pinentryPackage = pkgs.pinentry-gtk2;
+    pinentryPackage = pkgs.pinentry_mac;
     sshKeys = [
       "C0B077947A793E7D66DCE451EA5B9A8C05A954D6"
     ];
