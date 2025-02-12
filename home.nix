@@ -6,7 +6,11 @@
   home.sessionVariables = { 
     VCPKG_ROOT = "~/Projects/vcpkg";
   };
-  
+
+  home.sessionPath = [
+    "$VCPKG_ROOT"
+  ];
+
   nixpkgs.config.allowUnfree = true;
 
   programs.home-manager.enable = true;
@@ -14,17 +18,27 @@
   home.packages = [
     pkgs.ansible
     pkgs.bashInteractive
+    pkgs.ffmpeg
+    pkgs.fossil
     pkgs.graphviz
+#    pkgs.gtkwave
     pkgs.jq
     pkgs.kubectl
     pkgs.magic-wormhole-rs  # secure file transfers
+    pkgs.mill               # Scala build tool
     pkgs.neofetch           # 
-    pkgs.openjdk17
-    pkgs.podman
+    pkgs.ninja
+#    pkgs.npm
+#    pkgs.openjdk17
+    pkgs.pdfgrep
+    pkgs.poetry		          # python poetry
+#    pkgs.podman
+    pkgs.pre-commit
     pkgs.protobuf
     pkgs.python3
     pkgs.rage               # file encryption
     pkgs.rustup
+    pkgs.scala-cli
     pkgs.sequoia-sq         # gpg replacement (provides sq command)
     pkgs.sequoia-sqop
     pkgs.sequoia-chameleon-gnupg
