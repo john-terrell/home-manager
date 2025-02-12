@@ -20,6 +20,7 @@
     pkgs.bashInteractive
     pkgs.ffmpeg
     pkgs.fossil
+    pkgs.gcr                # for gnome pinentry
     pkgs.graphviz
 #    pkgs.gtkwave
     pkgs.jq
@@ -137,5 +138,18 @@
     enable = true;
     profileExtra = builtins.readFile ./zprofile;
     initExtra = builtins.readFile ./zshrc;
+  };
+
+  services.gpg-agent = {
+    enable = true;
+    enableExtraSocket = true;
+    defaultCacheTtl = 14400;
+    maxCacheTtl = 86400;
+    enableSshSupport = true;
+    enableZshIntegration = true;
+    pinentryPackage = pkgs.pinentry-gtk2;
+    sshKeys = [
+      "C0B077947A793E7D66DCE451EA5B9A8C05A954D6"
+    ];
   };
 }
