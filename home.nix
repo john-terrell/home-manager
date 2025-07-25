@@ -5,6 +5,9 @@
 
   home.sessionVariables = { 
     VCPKG_ROOT = "~/Projects/vcpkg";
+    QT6_DIR = "~/Qt/6.8.3/macos/lib/cmake/Qt6";
+    TRACER_HMI_INSTALL_PATH = "~/Projects/CRL/install/";
+    DOCKER_HOST = "10.10.4.12";
   };
 
   home.sessionPath = [
@@ -16,35 +19,33 @@
   programs.home-manager.enable = true;
 
   home.packages = [
-    pkgs.ansible
+    pkgs._7zz
+    pkgs.backrest
     pkgs.bashInteractive
+    pkgs.docker
     pkgs.ffmpeg
-    pkgs.fossil
     pkgs.gcr                # for gnome pinentry
+    pkgs.git-filter-repo
+    pkgs.git-lfs
     pkgs.graphviz
-#    pkgs.gtkwave
-    pkgs.jq
+    # pkgs.helm
     pkgs.kubectl
     pkgs.magic-wormhole-rs  # secure file transfers
-    pkgs.mill               # Scala build tool
     pkgs.neofetch           # 
     pkgs.ninja
-#    pkgs.npm
-#    pkgs.openjdk17
+    pkgs.pass
     pkgs.pdfgrep
-    pkgs.poetry		          # python poetry
-#    pkgs.podman
-    pkgs.pre-commit
-    pkgs.protobuf
-    pkgs.python3
-    pkgs.rage               # file encryption
-    pkgs.rustup
-    pkgs.scala-cli
-    pkgs.sequoia-sq         # gpg replacement (provides sq command)
-    pkgs.sequoia-sqop
-    pkgs.sequoia-chameleon-gnupg
+    pkgs.pinentry-gtk2
+    pkgs.pkg-config
+#    pkgs.rage               # file encryption
+#    pkgs.sequoia-sq         # gpg replacement (provides sq command)
+#    pkgs.sequoia-sqop
+#    pkgs.sequoia-chameleon-gnupg
+    pkgs.restic
     pkgs.sops    
-    pkgs.terraform           # security as a service
+    pkgs.tree
+    pkgs.wget
+    pkgs.zstd
   ];
 
   programs.btop = {
@@ -137,7 +138,7 @@
   programs.zsh = {
     enable = true;
     profileExtra = builtins.readFile ./zprofile;
-    initExtra = builtins.readFile ./zshrc;
+    initContent = builtins.readFile ./zshrc;
   };
 
   services.gpg-agent = {
@@ -147,8 +148,7 @@
     maxCacheTtl = 86400;
     enableSshSupport = true;
     enableZshIntegration = true;
-#    pinentryPackage = pkgs.pinentry-gtk2;
-    pinentryPackage = pkgs.pinentry_mac;
+    pinentry.package = pkgs.pinentry_mac;
     sshKeys = [
       "C0B077947A793E7D66DCE451EA5B9A8C05A954D6"
     ];
