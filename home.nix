@@ -1,29 +1,25 @@
 { pkgs, ... }: {
   home.username = "johnt";
   home.homeDirectory = if pkgs.hostPlatform.isLinux then "/home/johnt" else "/Users/johnt";
-  home.stateVersion = "22.11";
+  home.stateVersion = "25.05";
 
   home.sessionVariables = { 
-    VCPKG_ROOT = "~/Projects/vcpkg";
     QT6_DIR = "~/Qt/6.8.3/macos/lib/cmake/Qt6";
     TRACER_HMI_INSTALL_PATH = "~/Projects/CRL/install/";
     DOCKER_HOST = "10.10.4.12";
   };
 
-  home.sessionPath = [
-    "$VCPKG_ROOT"
-  ];
-
   nixpkgs.config.allowUnfree = true;
 
   programs.home-manager.enable = true;
+
+  home.file.".p10k.zsh".text = builtins.readFile ./p10k.zsh;
 
   home.packages = [
     pkgs._7zz
     pkgs.backrest
     pkgs.bashInteractive
     pkgs.docker
-    pkgs.ffmpeg
     pkgs.gcr                # for gnome pinentry
     pkgs.git-filter-repo
     pkgs.git-lfs
@@ -31,6 +27,7 @@
     # pkgs.helm
     pkgs.kubectl
     pkgs.magic-wormhole-rs  # secure file transfers
+    pkgs.meslo-lgs-nf
     pkgs.neofetch           # 
     pkgs.ninja
     pkgs.pass
@@ -45,6 +42,7 @@
     pkgs.sops    
     pkgs.tree
     pkgs.wget
+    pkgs.zsh-powerlevel10k
     pkgs.zstd
   ];
 
@@ -137,8 +135,24 @@
 
   programs.zsh = {
     enable = true;
-    profileExtra = builtins.readFile ./zprofile;
-    initContent = builtins.readFile ./zshrc;
+
+    initContent = ''
+      # p10k instant prompt
+      P10K_INSTANT_PROMPT="$XDG_CACHE_HOME/p10k-instant-prompt-''${(%):-%n}.zsh"
+      [[ ! -r "$P10K_INSTANT_PROMPT" ]] || source "$P10K_INSTANT_PROMPT"
+
+      source ~/.p10k.zsh
+
+      export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+    '';
+
+    plugins = with pkgs; [
+      {
+        file = "powerlevel10k.zsh-theme";
+        name = "powerlevel10k";
+        src = "${zsh-powerlevel10k}/share/zsh-powerlevel10k";
+      }
+    ];
   };
 
   services.gpg-agent = {
@@ -148,7 +162,7 @@
     maxCacheTtl = 86400;
     enableSshSupport = true;
     enableZshIntegration = true;
-    pinentry.package = pkgs.pinentry_mac;
+    pinentry.package = if pkgs.hostPlatform.isLinux then pkgs.pinentry-gtk2 else pkgs.pinentry_mac;
     sshKeys = [
       "C0B077947A793E7D66DCE451EA5B9A8C05A954D6"
     ];
