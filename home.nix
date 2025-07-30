@@ -24,7 +24,7 @@
     pkgs.git-filter-repo
     pkgs.git-lfs
     pkgs.graphviz
-    # pkgs.helm
+    pkgs.jetbrains.clion
     pkgs.kubectl
     pkgs.magic-wormhole-rs  # secure file transfers
     pkgs.meslo-lgs-nf
