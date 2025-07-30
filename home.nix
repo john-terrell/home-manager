@@ -30,6 +30,7 @@
     pkgs.meslo-lgs-nf
     pkgs.neofetch           # 
     pkgs.ninja
+    pkgs.nixfmt
     pkgs.pass
     pkgs.pdfgrep
     pkgs.pinentry-gtk2
