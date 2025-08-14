@@ -49,6 +49,22 @@
     pkgs.zstd
   ];
 
+  programs.alacritty = {
+      enable = true;
+      settings = {
+          font = {
+              size = 20;
+              normal = {
+                  family = "Firacode Nerd Font";
+                  style = "Regular";
+              };
+          };
+          window = {
+              startup_mode = "Maximized";
+          };
+      };
+  };
+
   programs.btop = {
     enable = true;
   };
