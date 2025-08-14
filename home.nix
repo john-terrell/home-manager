@@ -100,13 +100,6 @@
     enable = true;
   };
 
-  programs.neovim = {
-    enable = true;
-    viAlias = true;
-    vimAlias = true;
-    vimdiffAlias = true;
-  };
-
   programs.rbw = {      # Bitwarden CLI client
     enable = true;
     settings = {
