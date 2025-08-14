@@ -15,6 +15,10 @@
 
   home.file.".p10k.zsh".text = builtins.readFile ./p10k.zsh;
 
+  home.shellAliases = {
+    vi = "nix run github:john-terrell/nixvim";
+  };
+
   home.packages = [
     pkgs._7zz
     pkgs.backrest
@@ -24,20 +28,19 @@
     pkgs.git-filter-repo
     pkgs.git-lfs
     pkgs.graphviz
+    pkgs.grc
     pkgs.kubectl
     pkgs.magic-wormhole-rs  # secure file transfers
-    pkgs.meslo-lgs-nf
     pkgs.neofetch           # 
+    pkgs.nerd-fonts.fira-code
+    pkgs.nerd-fonts.fira-mono
+    pkgs.nerd-fonts.meslo-lg
     pkgs.ninja
     pkgs.nixfmt
     pkgs.pass
     pkgs.pdfgrep
     pkgs.pinentry-gtk2
     pkgs.pkg-config
-#    pkgs.rage               # file encryption
-#    pkgs.sequoia-sq         # gpg replacement (provides sq command)
-#    pkgs.sequoia-sqop
-#    pkgs.sequoia-chameleon-gnupg
     pkgs.restic
     pkgs.sops    
     pkgs.tree
@@ -58,6 +61,27 @@
   programs.eza = {        # 'ls' replacement
     enable = true;
     git = true;
+  };
+
+  programs.fish = {
+    enable = true;
+    interactiveShellInit = ''
+      set fish_greeting # Disable greeting
+    '';
+    plugins = [
+      # Enable a plugin (here grc for colorized command output) from nixpkgs
+      { name = "grc"; src = pkgs.fishPlugins.grc.src; }
+      # Manually packaging and enable a plugin
+      {
+        name = "z";
+        src = pkgs.fetchFromGitHub {
+          owner = "jethrokuan";
+          repo = "z";
+          rev = "e0e1b9dfdba362f8ab1ae8c1afc7ccf62b89f7eb";
+          sha256 = "0dbnir6jbwjpjalz14snzd3cgdysgcs3raznsijd6savad3qhijc";
+        };
+      }
+    ];
   };
 
   programs.fzf = {        # fuzzy search tool
