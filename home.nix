@@ -113,6 +113,7 @@
     signing.key = "64EDA67B2782882D8A5A83EC2E424258DD3731F4";
     signing.signByDefault = true;
     delta.enable = true;
+    lfs.enable = true;
   };
 
   programs.gpg = {
