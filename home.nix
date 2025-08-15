@@ -16,7 +16,8 @@
   home.file.".p10k.zsh".text = builtins.readFile ./p10k.zsh;
 
   home.shellAliases = {
-    vi = "nix run github:john-terrell/nixvim";
+    vi = "nix run github:john-terrell/nixvim/main";
+    refreshvi = "nix run github:john-terrell/nixvim/main --refresh";
   };
 
   home.packages = [
