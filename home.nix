@@ -24,6 +24,7 @@
     pkgs._7zz
     pkgs.backrest
     pkgs.bashInteractive
+    pkgs.clang
     pkgs.docker
     pkgs.gcr                # for gnome pinentry
     pkgs.git-filter-repo
@@ -80,6 +81,17 @@
     git = true;
   };
 
+  programs.firefox = {
+      enable = true;
+      policies = {
+          DisableTelemetry = true;
+          DisableFirefoxStudios = true;
+      };
+      profiles.default = {
+          containersForce = true;
+          search.force = true;
+      };
+  };
   programs.fish = {
     enable = true;
     interactiveShellInit = ''
