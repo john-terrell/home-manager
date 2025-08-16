@@ -4,8 +4,6 @@
   home.stateVersion = "25.05";
 
   home.sessionVariables = { 
-    QT6_DIR = "~/Qt/6.8.3/macos/lib/cmake/Qt6";
-    TRACER_HMI_INSTALL_PATH = "~/Projects/CRL/install/";
     DOCKER_HOST = "10.10.4.12";
   };
 
@@ -50,22 +48,6 @@
     pkgs.zsh-powerlevel10k
     pkgs.zstd
   ];
-
-  programs.alacritty = {
-      enable = true;
-      settings = {
-          font = {
-              size = 20;
-              normal = {
-                  family = "Firacode Nerd Font";
-                  style = "Regular";
-              };
-          };
-          window = {
-              startup_mode = "Maximized";
-          };
-      };
-  };
 
   programs.btop = {
     enable = true;
