@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:{
   home.username = "johnt";
   home.homeDirectory = if pkgs.hostPlatform.isLinux then "/home/johnt" else "/Users/johnt";
   home.stateVersion = "25.05";
@@ -12,11 +12,6 @@
   programs.home-manager.enable = true;
 
   home.file.".p10k.zsh".text = builtins.readFile ./p10k.zsh;
-
-  home.shellAliases = {
-    vi = "nix run github:john-terrell/nixvim/main";
-    refreshvi = "nix run github:john-terrell/nixvim/main --refresh";
-  };
 
   home.packages = [
     pkgs._7zz
@@ -41,6 +36,8 @@
     pkgs.pdfgrep
     pkgs.pinentry-gtk2
     pkgs.pkg-config
+    pkgs.protonmail-bridge-gui
+    pkgs.protonvpn-gui
     pkgs.restic
     pkgs.sops    
     pkgs.tree
